@@ -1,0 +1,76 @@
+<app-header [dispButton]=true [dispUsersButton]=true [dispLogoutButton]=true (onButtonClick)='onProfileClick()'
+    dispButtonImg=account_circle>
+</app-header>
+<p class="cardClass">
+    <mat-form-field appearance="outline" style="width: 70%;">
+        <mat-label>Search for Post</mat-label>
+        <input matInput placeholder="Search..." [(ngModel)]="searchText">
+        <mat-icon matSuffix (click)="onSearchClick()" style="cursor: pointer;">search</mat-icon>
+    </mat-form-field>
+</p>
+<p class="cardClass">
+    <mat-form-field appearance="outline" style="width: 70%;cursor: pointer;" (click)="openDialog()">
+        <mat-label>Share a Post </mat-label>
+        <input matInput placeholder="Search..." readonly="true" style="cursor: pointer;">
+        <mat-icon matSuffix style="cursor: pointer;">my_library_add</mat-icon>
+    </mat-form-field>
+</p>
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="20"
+    (scrolled)="onScroll()">
+    <div *ngFor="let post of posts">
+        <div class="cardClass">
+            <mat-card class="example-card" style="width: 700px;">
+                <mat-card-header *ngIf="post.user !== undefined">
+                    <img mat-card-avatar class="example-header-image" *ngIf="showImage(post.user)"
+                        src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                    <img mat-card-avatar class="example-header-image" *ngIf="!showImage(post.user)"
+                        [src]="post.owner.image" alt="Avatar">
+                    <mat-card-title>{{post.owner.username}}</mat-card-title>
+                    <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="post.image[0]" alt="Photo of a Shiba Inu" *ngIf="post.image.length !== 0">
+                <mat-card-content>
+                    <label *ngIf="post.body !== undefined">
+                        {{post.body}}
+                    </label>
+                    <label *ngIf="post.text !== undefined">
+                        {{post.text}}
+                    </label>
+                </mat-card-content>
+                <mat-card-actions *ngIf="post.user !== undefined">
+                    <mat-icon (click)="onLikeClick(post._id)" style="cursor: pointer;"
+                        [ngClass]="{'likeClass': checkLike(post.likes), 'unlikeClass': !checkLike(post.likes)}">
+                        favorite
+                    </mat-icon>
+                    <mat-label style="color: red;">
+                        {{post.likes.length}}
+                    </mat-label>
+                </mat-card-actions>
+                <div style="border: 1px solid gray; padding: 10px;" *ngIf="post.user !== undefined">
+                    <mat-list role="list" style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                        <div *ngFor="let comment of post.comments">
+                            <h2>{{comment.owner.username}}</h2>
+                            <p>
+                                {{comment.text}}
+                            </p>
+                            <button class="btn btn-danger btn-block" style="margin: 0px !important;"
+                                *ngIf="checkComment(comment.user)"
+                                (click)="onDeleteCommentClick(post._id, comment)">Delete</button>
+                        </div>
+                    </mat-list>
+                    <div>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Leave a comment</mat-label>
+                            <textarea matInput placeholder="Ex. It makes me feel..."
+                                [(ngModel)]="commentText"></textarea>
+                        </mat-form-field>
+                        <br />
+                        <button class="btn btn-danger btn-block" style="margin: 0px !important;"
+                            (click)="onCommentClick(post._id)">Comment</button>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <br />
+    </div>
+</div>

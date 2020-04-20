@@ -1,0 +1,19 @@
+<div
+  style="height: 50px;background-color: rgb(36, 37, 38); display: flex !important; align-content: center !important; align-items: center !important;">
+  <img src="assets/logo.png" style="padding-left: 30px; height: 60px;">
+  <div style="position: absolute; right: 1px;">
+    <mat-icon *ngIf="dispUsersButton" (click)="callOpenUsers()" svgIcon="account-search"
+      style="color: white; cursor: pointer; margin-right: 25px;">
+    </mat-icon>
+    <mat-icon *ngIf="dispButton" (click)="callButton()" style="color: white; cursor: pointer; margin-right: 25px;">
+      {{dispButtonImg}}
+    </mat-icon>
+    <mat-icon *ngIf="dispLogoutButton" (click)="callLogoutButton()"
+      style="color: white; cursor: pointer; margin-right: 25px;">
+      logout
+    </mat-icon>
+    <mat-icon *ngIf="dispLoginButton" (click)="callButton()" svgIcon="login"
+      style="color: white; cursor: pointer; margin-right: 25px;">
+    </mat-icon>
+  </div>
+</div>

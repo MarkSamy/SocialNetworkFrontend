@@ -1,0 +1,16 @@
+<div align="center">
+    <label class="h4" style="margin-left: 10px; margin: 5px;"> Add bad word</label>
+    <input style="width: 100px;" class="form-control" type="text" [(ngModel)]="badWord">
+    <Button style="width: 100px;" class="btn btn-danger btn-block" (click)="add()"> Add </Button>
+</div>
+
+<mat-grid-list cols="2" gutterSize="0.5" rowHeight="50px">
+    <mat-grid-tile [colspan]="1" style="font-weight: 600;">Bad word</mat-grid-tile>
+    <mat-grid-tile [colspan]="1" style="font-weight: 600;">Action</mat-grid-tile>
+    <div *ngFor="let word of words;">
+        <mat-grid-tile [colspan]="1">{{word.word}}</mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <button class="btn btn-danger btn-block" style="width: 80px;" (click)="delete(word)"> Delete </button>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>

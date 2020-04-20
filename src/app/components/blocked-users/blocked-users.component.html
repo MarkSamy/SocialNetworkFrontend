@@ -1,0 +1,10 @@
+<mat-grid-list cols="2" gutterSize="0.5" rowHeight="50px">
+    <mat-grid-tile [colspan]="1" style="font-weight: 600;">Message</mat-grid-tile>
+    <mat-grid-tile [colspan]="1" style="font-weight: 600;">Action</mat-grid-tile>
+    <div *ngFor="let user of users;">
+        <mat-grid-tile [colspan]="1">{{user.message}}</mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <button class="btn btn-danger btn-block" style="width: 80px;" (click)="unblockUser(user)"> Unblock </button>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>

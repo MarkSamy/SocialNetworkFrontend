@@ -1,0 +1,23 @@
+<app-header [dispButton]=true [dispLogoutButton]=true (onButtonClick)='onHomeClick()' dispButtonImg=home></app-header>
+<div align="center">
+    <label class="h4" style="margin-left: 10px; margin: 5px;">Search for user</label>
+    <input style="margin-left: 10px; width: 100px;" class="form-control" type="text" [(ngModel)]="searchTerm">
+    <Button style="margin-left: 10px; width: 100px;" class="btn btn-danger btn-block" (click)="getUsers()"> Search
+    </Button>
+</div>
+
+<mat-grid-list cols="2" gutterSize="0.5" rowHeight="50px">
+    <mat-grid-tile [colspan]="1" style="font-weight: 600;">Users</mat-grid-tile>
+    <mat-grid-tile [colspan]="1" style="font-weight: 600;">Action</mat-grid-tile>
+    <div *ngFor="let user of users;">
+        <mat-grid-tile [colspan]="1">{{user.username}}</mat-grid-tile>
+        <mat-grid-tile [colspan]="1" *ngIf="user.checkFollow">
+            <button class="btn btn-danger btn-block" style="width: 120px;" (click)="toggleFollow(user._id)"> Follow
+            </button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" *ngIf="!user.checkFollow">
+            <button class="btn btn-danger btn-block" style="width: 120px;" (click)="toggleFollow(user._id)"> Unfollow
+            </button>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>

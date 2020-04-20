@@ -1,0 +1,36 @@
+<div class="col-lg-5 center">
+    <h1 class="h1-strong">Add advertisment</h1>
+
+    <form #adForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+        <p>
+            <label>Body</label>
+            <input type="text" name="body" [(ngModel)]="ad.body" class="form-control" />
+        </p>
+
+        <p>
+            <label>location</label>
+            <input type="text" name="location" [(ngModel)]="ad.location" class="form-control" />
+        </p>
+
+        <p>
+            <label>image</label>
+            <br>
+            <input #myInput name="image" type="file" (change)="onFileSelected($event, ad)"
+                accept="image/png, image/jpeg">
+        </p>
+
+        <p>
+            <label>Age</label>
+            <input type="text" name="age" [(ngModel)]="ad.age" class="form-control" />
+        </p>
+        <label>Add age constrains</label>
+        <br>
+        <mat-radio-group aria-label="Add age constrains" name="isGreater" [(ngModel)]="isGreater">
+            <mat-radio-button value="1">None</mat-radio-button>
+            <mat-radio-button value="2">Greater than</mat-radio-button>
+            <mat-radio-button value="3">Younger than</mat-radio-button>
+        </mat-radio-group>
+
+        <button class="btn btn-danger btn-block" style="margin: 0px !important;">Add advertisment</button>
+    </form>
+</div>

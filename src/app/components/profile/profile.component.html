@@ -1,0 +1,22 @@
+<app-header [dispButton]=true [dispLogoutButton]=true (onButtonClick)='onHomeClick()' dispButtonImg=home></app-header>
+<mat-grid-list cols="3" gutterSize="0" rowHeight="100px">
+    <mat-grid-tile [rowspan]="1" [colspan]="3"></mat-grid-tile>
+    <mat-grid-tile [rowspan]="2" [colspan]="1">
+        <img *ngIf="showImage" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"
+            style="width:200px;border-radius: 50%;height:200px;">
+        <img *ngIf="!showImage" [src]="this.user.image" alt="Avatar"
+            style="width:200px;border-radius: 50%;height:200px;">
+    </mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="2">
+        <button *ngIf="showFollow">Follow</button>
+    </mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="2"></mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="1">{{user.username}}</mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="2">Email: {{user.email}}</mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="1"></mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="2">Address: {{user.location}}</mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="1"></mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="2">Birth of date: {{user.dateOfBirth}}</mat-grid-tile>
+</mat-grid-list>
+<a style="padding: 15px;" (click)="editProfile()" routerLinkActive="active">
+    Update profile</a>

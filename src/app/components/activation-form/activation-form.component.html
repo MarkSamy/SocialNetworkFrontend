@@ -1,0 +1,13 @@
+<div class="col-lg-5 center">
+    <h1 class="h1-strong">Add activation request message</h1>
+    <form class="col-lg-12">
+        <p>
+            <label>Message body</label>
+            <input style="width: 400 px; height: 300px;" name="body" [(ngModel)]="message" class="form-control" />
+        </p>
+        <div class="form-group">
+            <button class="btn btn-danger btn-block" (click)="addMessage(message)"
+                style="margin: 0px !important;">Add</button>
+        </div>
+    </form>
+</div>

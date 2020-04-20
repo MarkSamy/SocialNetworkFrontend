@@ -1,0 +1,31 @@
+<app-header [dispButton]=true [dispLogoutButton]=true (onButtonClick)='onHomeClick()' dispButtonImg=home></app-header>
+<div class="col-lg-5 center">
+    <h1 class="h1-strong">Edit profile</h1>
+    <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)" class="col-lg-12">
+        <p>
+            <label>User name: {{user.username}}</label>
+            <input type="hidden" name="username" value="{{user.username}}" class="form-control" required>
+        </p>
+
+        <p>
+            <label>Email: {{user.email}}</label>
+            <input type="hidden" name="email" value="{{user.email}}" class="form-control" required>
+        </p>
+        <p>
+            <label>Profile picture</label>
+            <br>
+            <input type="file" (change)="onFileSelected($event, user)">
+        </p>
+        <p>
+            <label>Date of birth</label>
+            <br><label>Old DOB: {{user.dateOfBirth | date:'M/d/yy'}}</label>
+            <input type="date" name="dateOfBirth" value="{{user.dateOfBirth}}" class="form-control" required>
+
+        </p>
+        <p>
+            <label>Location</label>
+            <input type="text" name="location" value="{{user.location}}" class="form-control" required />
+        </p>
+        <input type="Submit" class="btn btn-danger btn-block" style="margin: 0px !important;" value="Update">
+    </form>
+</div>
