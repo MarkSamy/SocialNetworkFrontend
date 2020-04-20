@@ -55,15 +55,11 @@ export class ProfileEditComponent implements OnInit {
   onSubmit(form) {
     this.userService.editProfile(this.user).subscribe(
       response => {
-        if (response.status == "success") {
           form.reset();
           this.toastr.success("profile updated successfuly")
 
           this.router.navigate(['/profile']);
 
-        }
-        else
-          this.toastr.error("Error Editing profile");
       },
       error => {
         this.toastr.error(error.error.message)

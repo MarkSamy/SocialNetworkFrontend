@@ -6,7 +6,7 @@ export class User {
     password: String;
     image: String;
     location: String;
-    dateOfBirth: Date
+    dateOfBirth: Date;
     notifications: Array<String>;
     blocked: Boolean;
     bad_post_count: Number;

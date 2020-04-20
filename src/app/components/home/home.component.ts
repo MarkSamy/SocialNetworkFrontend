@@ -43,6 +43,10 @@ export class HomeComponent implements OnInit {
     return false;
   }
 
+  formatDate(date: string) {
+    return date.split('T', 1);
+  }
+
   checkLike(likes: string[]) {
     return likes.includes(this.contextService.getUserId());
   }
@@ -197,6 +201,8 @@ export class HomeComponent implements OnInit {
         this.postService.addPost(post).subscribe(
           response => {
             console.log(response);
+            // this.posts.push(response.message);
+            this.posts.unshift(response.message);
           },
           error => {
             console.log(<any>error);

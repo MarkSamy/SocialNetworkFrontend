@@ -21,12 +21,12 @@
         <div class="cardClass">
             <mat-card class="example-card" style="width: 700px;">
                 <mat-card-header *ngIf="post.user !== undefined">
-                    <img mat-card-avatar class="example-header-image" *ngIf="showImage(post.user)"
+                    <img mat-card-avatar class="example-header-image" *ngIf="!showImage(post.owner)"
                         src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-                    <img mat-card-avatar class="example-header-image" *ngIf="!showImage(post.user)"
+                    <img mat-card-avatar class="example-header-image" *ngIf="showImage(post.owner)"
                         [src]="post.owner.image" alt="Avatar">
                     <mat-card-title>{{post.owner.username}}</mat-card-title>
-                    <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+                    <mat-card-subtitle>{{formatDate(post.date)}}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image [src]="post.image[0]" alt="Photo of a Shiba Inu" *ngIf="post.image.length !== 0">
                 <mat-card-content>
