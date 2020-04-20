@@ -8,7 +8,7 @@
             style="width:200px;border-radius: 50%;height:200px;">
     </mat-grid-tile>
     <mat-grid-tile [rowspan]="1" [colspan]="2">
-        <button *ngIf="showFollow">Follow</button>
+        <Button style="width: 150px;" class="btn btn-danger btn-block" (click)="editProfile()"> Update profile </Button>
     </mat-grid-tile>
     <mat-grid-tile [rowspan]="1" [colspan]="2"></mat-grid-tile>
     <mat-grid-tile [rowspan]="1" [colspan]="1">{{user.username}}</mat-grid-tile>
@@ -16,7 +16,5 @@
     <mat-grid-tile [rowspan]="1" [colspan]="1"></mat-grid-tile>
     <mat-grid-tile [rowspan]="1" [colspan]="2">Address: {{user.location}}</mat-grid-tile>
     <mat-grid-tile [rowspan]="1" [colspan]="1"></mat-grid-tile>
-    <mat-grid-tile [rowspan]="1" [colspan]="2">Birth of date: {{user.dateOfBirth}}</mat-grid-tile>
+    <mat-grid-tile [rowspan]="1" [colspan]="2">Birth of date: {{formatDate(user.dateOfBirth)}}</mat-grid-tile>
 </mat-grid-list>
-<a style="padding: 15px;" (click)="editProfile()" routerLinkActive="active">
-    Update profile</a>
